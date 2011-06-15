@@ -1,6 +1,6 @@
 ===========================
-HBase: The Definitive Guide
+Hush: HBase URL Shortener
 ===========================
 
-This repository has all the code as used in the HBase book.
+TBD
 
