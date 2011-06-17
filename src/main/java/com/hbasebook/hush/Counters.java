@@ -16,7 +16,6 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.HTable;
 import org.apache.hadoop.hbase.client.Increment;
-import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.util.Bytes;
 
@@ -39,15 +38,12 @@ public class Counters {
   }
 
   public void initCounters(String shortId) throws IOException {
-    // increment user statistics
     HTable table = rm.getTable(ShortUrlTable.NAME);
     byte[] rowKey = Bytes.toBytes(shortId);
-    Put put = new Put(rowKey);
-
-    byte[] qualifier = getQualifier(ColumnQualifier.DAY,
-      StatisticsCategory.CLICK, new Date(), null);
-    put.add(ShortUrlTable.DAILY_FAMILY, qualifier, Bytes.toBytes(0L));
-    table.put(put);
+    Increment increment = new Increment(rowKey);
+    increment.addColumn(ShortUrlTable.DATA_FAMILY, ShortUrlTable.CLICKS, 0L);
+    addIncrement(increment, StatisticsCategory.CLICK, new Date(), null, 0L);
+    table.increment(increment);
     rm.putTable(table);
   }
 
