@@ -1,7 +1,5 @@
 package com.hbasebook.hush.table;
 
-import java.io.IOException;
-
 import org.apache.hadoop.hbase.util.Bytes;
 
 public class UserTable {
@@ -19,8 +17,4 @@ public class UserTable {
   public static final byte[] FIRSTNAME = Bytes.toBytes("firstname");
   public static final byte[] LASTNAME = Bytes.toBytes("lastname");
   public static final byte[] EMAIL = Bytes.toBytes("email");
-
-  public void addUser(String username) throws IOException {
-  }
-
 }

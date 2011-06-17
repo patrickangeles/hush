@@ -43,7 +43,7 @@ public class HushUtil {
    * @return The encoded - and optionally reversed - encoded string.
    */
   private static String longToString(long number, String digits,
-      boolean reverse) {
+    boolean reverse) {
     int base = digits.length();
     String result = number == 0 ? "0" : "";
     while (number != 0) {
@@ -87,7 +87,7 @@ public class HushUtil {
   }
 
   public static String getOrSetUsername(HttpServletRequest request,
-      HttpServletResponse response) throws IOException {
+    HttpServletResponse response) throws IOException {
     Principal principal = request.getUserPrincipal();
     String username = null;
     if (principal != null) {
@@ -95,13 +95,14 @@ public class HushUtil {
     }
     if (username == null) {
       // no principal found
-      try {
-        for (Cookie cookie : request.getCookies()) {
+      Cookie[] cookies = request.getCookies();
+      if (cookies != null) {
+        for (Cookie cookie : cookies) {
           if (cookie.getName().equals("auid")) {
             username = cookie.getValue();
           }
         }
-      } catch (Exception e) {}
+      }
     }
     if (username == null) {
       // no principal and no cookie found in request
@@ -118,5 +119,4 @@ public class HushUtil {
     }
     return username;
   }
-
 }

@@ -176,6 +176,8 @@ public class UrlManager {
     table.put(put);
     table.flushCommits();
     rm.putTable(table);
+
+    rm.getCounters().initCounters(shortUrl.getId());
   }
 
   /**
