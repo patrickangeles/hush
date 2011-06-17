@@ -8,6 +8,12 @@
 <%
   String username = HushUtil.getOrSetUsername(request, response);
   ResourceManager rm = ResourceManager.getInstance();
+  String requestURI = request.getRequestURI() ;
+  int endIndex = requestURI.lastIndexOf('/');
+  if (endIndex < 0)
+    endIndex = requestURI.length();
+  String siteUrl = requestURI.substring(0, endIndex) ;
+  String site = rm.getDomainManager().getDefaultDomain();
   List<ShortUrlStatistics> stats = rm.getCounters().getUserShortUrlStatistics(
     username);
 
@@ -31,7 +37,7 @@
           rowNum++;
           ShortUrl shortUrl = stat.getShortUrl() ;
           String url = shortUrl.toString();
-          String detailsUrl = url + "+";
+          String detailsUrl = siteUrl + "/" + shortUrl.getId() + "+";
           String longUrl = shortUrl.getLongUrl();
           StringBuffer sparkData = new StringBuffer();
           for (Object obj : stat.getCounters("clicks").descendingSet()) {
