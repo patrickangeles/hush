@@ -36,7 +36,7 @@ public class HushUtil {
 
   /**
    * Encodes a number in BASE N.
-   * 
+   *
    * @param number The number to encode.
    * @param digits The character set to use for the encoding.
    * @param reverse Flag to indicate if the result should be reversed.
@@ -60,7 +60,7 @@ public class HushUtil {
 
   /**
    * Decodes the given BASE N encoded value.
-   * 
+   *
    * @param number The encoded value to decode.
    * @param digits The character set to decode with.
    * @param reverse Flag to indicate how the encoding was done.
@@ -93,14 +93,19 @@ public class HushUtil {
     if (principal != null) {
       username = principal.getName();
     }
+
     if (username == null) {
       // no principal found
-      for (Cookie cookie : request.getCookies()) {
-        if (cookie.getName().equals("auid")) {
-          username = cookie.getValue();
+      Cookie cookies[] = request.getCookies();
+      if (cookies != null) {
+        for (Cookie cookie : cookies) {
+          if (cookie.getName().equals("auid")) {
+            username = cookie.getValue();
+          }
         }
       }
     }
+
     if (username == null) {
       // no principal and no cookie found in request
       // check response first, maybe an enclosing jsp set it
