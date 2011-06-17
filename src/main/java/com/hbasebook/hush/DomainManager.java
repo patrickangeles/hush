@@ -20,6 +20,9 @@ import com.hbasebook.hush.model.ShortDomain;
 import com.hbasebook.hush.table.LongDomainTable;
 import com.hbasebook.hush.table.ShortDomainTable;
 
+/**
+ * Service class for domain management and use.
+ */
 public class DomainManager {
   private final Log LOG = LogFactory.getLog(DomainManager.class);
   private final ResourceManager rm;
@@ -35,10 +38,20 @@ public class DomainManager {
     this.rm = rm;
   }
 
+  /**
+   * Initializes this object
+   *
+   * @throws IOException
+   */
   public void init() throws IOException {
     createDomains();
   }
 
+  /**
+   * Creates default domain entries
+   *
+   * @throws IOException
+   */
   public void createDomains() throws IOException {
     LOG.info("Creating test domains.");
     addLongDomain("oreil.ly", "www.oreilly.com");
@@ -187,10 +200,20 @@ public class DomainManager {
     }
   }
 
+  /**
+   * Sets the default domain.
+   *
+   * @param defaultDomain
+   */
   public void setDefaultDomain(String defaultDomain) {
     this.defaultDomain = defaultDomain;
   }
 
+  /**
+   * Gets the default domain, 'localhost' unless specified.
+   * 
+   * @return
+   */
   public String getDefaultDomain() {
     return defaultDomain;
   }

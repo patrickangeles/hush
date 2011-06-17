@@ -7,6 +7,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Various utility functions.
+ */
 public class HushUtil {
   /**
    * The digits used to BASE encode the short Ids.

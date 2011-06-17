@@ -2,6 +2,9 @@ package com.hbasebook.hush.table;
 
 import org.apache.hadoop.hbase.util.Bytes;
 
+/**
+ * Constants for the url table
+ */
 public class LongUrlTable {
   public static final byte[] NAME = Bytes.toBytes("url");
   public static final byte[] DATA_FAMILY = Bytes.toBytes("data");

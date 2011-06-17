@@ -339,6 +339,13 @@ public class UrlManager {
     return ids;
   }
 
+  /**
+   * Gets a list of urls shortened by a user.
+   *
+   * @param username
+   * @return
+   * @throws IOException
+   */
   public List<ShortUrl> getShortUrlsByUser(String username)
     throws IOException {
     List<ShortUrl> surls = new ArrayList<ShortUrl>();
