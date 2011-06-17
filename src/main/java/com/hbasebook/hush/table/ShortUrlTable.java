@@ -2,9 +2,6 @@ package com.hbasebook.hush.table;
 
 import org.apache.hadoop.hbase.util.Bytes;
 
-/**
- * Constants for the surl table
- */
 public class ShortUrlTable {
   public static final byte[] NAME = Bytes.toBytes("surl");
   public static final byte[] DATA_FAMILY = Bytes.toBytes("data");

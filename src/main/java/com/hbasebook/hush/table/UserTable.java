@@ -1,10 +1,9 @@
 package com.hbasebook.hush.table;
 
+import java.io.IOException;
+
 import org.apache.hadoop.hbase.util.Bytes;
 
-/**
- * Constants for the user table
- */
 public class UserTable {
   public static final byte[] NAME = Bytes.toBytes("user");
   public static final byte[] DATA_FAMILY = Bytes.toBytes("data");
@@ -20,4 +19,8 @@ public class UserTable {
   public static final byte[] FIRSTNAME = Bytes.toBytes("firstname");
   public static final byte[] LASTNAME = Bytes.toBytes("lastname");
   public static final byte[] EMAIL = Bytes.toBytes("email");
+
+  public void addUser(String username) throws IOException {
+  }
+
 }

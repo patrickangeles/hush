@@ -2,9 +2,6 @@ package com.hbasebook.hush.table;
 
 import org.apache.hadoop.hbase.util.Bytes;
 
-/**
- * Constants for the hush table
- */
 public class HushTable {
   public static final byte[] NAME = Bytes.toBytes("hush");
   public static final byte[] COUNTERS_FAMILY = Bytes.toBytes("cnt");

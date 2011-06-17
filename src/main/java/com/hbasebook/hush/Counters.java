@@ -175,6 +175,10 @@ public class Counters {
    */
   public ShortUrlStatistics getDailyStatistics(ShortUrl shortUrl, int maxValues,
     double normalize) throws IOException {
+    if (shortUrl == null) {
+      return null;
+    }
+
     ResourceManager manager = ResourceManager.getInstance();
     HTable table = manager.getTable(ShortUrlTable.NAME);
 

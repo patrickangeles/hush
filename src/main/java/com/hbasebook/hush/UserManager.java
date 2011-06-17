@@ -231,15 +231,6 @@ public class UserManager {
     rm.putTable(table);
   }
 
-  /**
-   * Change password. Requires old password to change.
-   *
-   * @param username
-   * @param oldPassword
-   * @param newPassword
-   * @return
-   * @throws IOException
-   */
   public boolean changePassword(String username, String oldPassword,
     String newPassword) throws IOException {
     HTable table = rm.getTable(UserTable.NAME);
@@ -254,14 +245,6 @@ public class UserManager {
     return check;
   }
 
-  /**
-   * Privileged change password method. Does not require knowledge of current
-   * password.
-   *
-   * @param username
-   * @param newPassword
-   * @throws IOException
-   */
   public void adminChangePassword(String username, String newPassword)
     throws IOException {
     HTable table = rm.getTable(UserTable.NAME);
@@ -273,13 +256,6 @@ public class UserManager {
     rm.putTable(table);
   }
 
-  /**
-   * Gets a single user by username
-   *
-   * @param username
-   * @return A user, or null if none found.
-   * @throws IOException
-   */
   public User getUser(String username) throws IOException {
     User user = null;
     HTable table = null;
@@ -312,10 +288,6 @@ public class UserManager {
     return user;
   }
 
-  /**
-   * @return list of users in the user table
-   * @throws IOException
-   */
   public List<User> getUsers() throws IOException {
     List<User> users = new ArrayList<User>();
     HTable table = rm.getTable(UserTable.NAME);

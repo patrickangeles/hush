@@ -7,9 +7,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Various utility functions.
- */
 public class HushUtil {
   /**
    * The digits used to BASE encode the short Ids.
@@ -96,19 +93,16 @@ public class HushUtil {
     if (principal != null) {
       username = principal.getName();
     }
-
     if (username == null) {
       // no principal found
-      Cookie cookies[] = request.getCookies();
-      if (cookies != null) {
-        for (Cookie cookie : cookies) {
+      try {
+        for (Cookie cookie : request.getCookies()) {
           if (cookie.getName().equals("auid")) {
             username = cookie.getValue();
           }
         }
-      }
+      } catch (Exception e) {}
     }
-
     if (username == null) {
       // no principal and no cookie found in request
       // check response first, maybe an enclosing jsp set it

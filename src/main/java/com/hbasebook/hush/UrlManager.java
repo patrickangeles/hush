@@ -119,12 +119,11 @@ public class UrlManager {
 
   /**
    * Adds a new long URL record to the table, but only if there is no previous
-   * entry. Creates a reference short URL only if a new long URL record was
-   * created.
+   * entry.
    *
-   * @param domain The domain name to use.
-   * @param url The long URL to look up.
-   * @param username The current username.
+   * @param domain  The domain name to use.
+   * @param url  The long URL to look up.
+   * @param username  The current username.
    * @return The new short Id when the add has succeeded.
    * @throws IOException When adding the new URL fails.
    */
@@ -180,10 +179,10 @@ public class UrlManager {
   }
 
   /**
-   * Creates a user to short-url mapping.
+   * Saves a mapping between the short Id and long URL.
    *
-   * @param username The current username.
-   * @param shortId The short Id to kink the user to.
+   * @param username  The current username.
+   * @param shortId  The short Id to kink the user to.
    * @throws IOException When saving the record fails.
    */
   private void createUserShortUrl(String username, String shortId)
@@ -339,13 +338,6 @@ public class UrlManager {
     return ids;
   }
 
-  /**
-   * Gets a list of urls shortened by a user.
-   *
-   * @param username
-   * @return
-   * @throws IOException
-   */
   public List<ShortUrl> getShortUrlsByUser(String username)
     throws IOException {
     List<ShortUrl> surls = new ArrayList<ShortUrl>();
