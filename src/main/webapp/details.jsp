@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="com.hbasebook.hush.ResourceManager" %>
 <%@ page import="com.hbasebook.hush.Counters" %>
+<%@ page import="com.hbasebook.hush.HushUtil" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.NavigableMap" %>
 <%@ page import="java.util.Calendar" %>
@@ -30,7 +31,7 @@
       forward(request, response);
   }
   SimpleDateFormat formatter = new SimpleDateFormat("yyyy, MM, dd");
-  String qrUrl = url.toString() + ".q";
+  String qrUrl = HushUtil.getBaseURL(request) + "/" + url.getId() + ".q";
   ShortUrl aggUrl = manager.getUrlManager().getShortUrl(url.getRefShortId());
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"

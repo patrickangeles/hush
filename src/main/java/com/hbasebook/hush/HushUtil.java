@@ -119,4 +119,13 @@ public class HushUtil {
     }
     return username;
   }
+
+  public static String getBaseURL(HttpServletRequest request) {
+    String url = request.getRequestURI();
+    int slash = url.lastIndexOf('/');
+    if (slash < 0) {
+      slash = url.length();
+    }
+    return url.substring(0, slash);
+  }
 }

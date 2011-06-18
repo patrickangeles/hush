@@ -8,11 +8,7 @@
 <%
   String username = HushUtil.getOrSetUsername(request, response);
   ResourceManager rm = ResourceManager.getInstance();
-  String requestURI = request.getRequestURI() ;
-  int endIndex = requestURI.lastIndexOf('/');
-  if (endIndex < 0)
-    endIndex = requestURI.length();
-  String siteUrl = requestURI.substring(0, endIndex) ;
+  String siteUrl = HushUtil.getBaseURL (request);
   String site = rm.getDomainManager().getDefaultDomain();
   List<ShortUrlStatistics> stats = rm.getCounters().getUserShortUrlStatistics(
     username);
