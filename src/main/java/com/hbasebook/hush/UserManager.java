@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -117,9 +116,10 @@ public class UserManager {
     ShortUrl shortUrl = rm.getUrlManager().shorten(
       new URL("http://hbasebook.com"), "admin", info);
     Calendar startDate = Calendar.getInstance();
-    startDate.set(2011, 1, 1);
     Calendar endDate = Calendar.getInstance();
-    endDate.setTime(new Date());
+    long today = System.currentTimeMillis();
+    startDate.setTimeInMillis(today - 1000 * 60 * 60 * 24 * 60);
+    endDate.setTimeInMillis(today);
     while (startDate.before(endDate)) {
       props.put(RequestInfo.InfoName.RemoteAddr, getRandomIp());
       int count = RANDOM.nextInt(200);
